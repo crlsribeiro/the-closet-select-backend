@@ -1,0 +1,28 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Amplify Gen 2 (generated, per developer / environment)
+.amplify/
+amplify_outputs*
+amplifyconfiguration*
+
+# Build, test and coverage output
+dist/
+coverage/
+.coverage
+
+# Secrets and local environment
+.env
+.env.*
+*.pem
+*.p8
+
+# macOS / editors
+.DS_Store
+.vscode/
+.idea/
+
+# Local assistant files (never committed)
+CLAUDE.md
+.claude/
