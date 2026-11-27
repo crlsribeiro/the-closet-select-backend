@@ -26,3 +26,7 @@ coverage/
 # Local assistant files (never committed)
 CLAUDE.md
 .claude/
+
+# Python cache
+__pycache__/
+*.pyc

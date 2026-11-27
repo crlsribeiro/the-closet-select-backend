@@ -94,10 +94,16 @@ class SupplyChainRegressionTests(unittest.TestCase):
                     self.assertRegex(match.group(1), r"@[0-9a-f]{40}$", "pin the action to a commit SHA")
 
     def test_npm_installs_use_the_lockfile(self):
+        """Bug: npm ci rejects Amplify lockfiles, so installs go through install-locked.sh."""
         for workflow, number, line in self.workflow_lines():
-            if re.search(r"\bnpm (install|i)\b", line):
+            if re.search(r"\bnpm (install|i|ci)\b", line):
                 with self.subTest(workflow=workflow, line=number):
-                    self.fail("use npm ci so the lockfile decides the versions")
+                    self.fail("use ./scripts/install-locked.sh so the committed lockfile decides the versions")
+
+    def test_locked_install_fails_when_the_lockfile_changes(self):
+        script = (ROOT / "scripts" / "install-locked.sh").read_text(encoding="utf-8")
+        self.assertIn("git diff --quiet -- package-lock.json", script)
+        self.assertIn("exit 1", script)
 
     def test_container_images_use_a_fixed_version(self):
         for workflow, number, line in self.workflow_lines():
