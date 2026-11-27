@@ -52,7 +52,7 @@ The script installs the tools from the `Brewfile`, the Node version from `mise.t
 
 ## Quality
 
-Every pull request runs: Conventional PR title, secrets scan and repository regression tests. Lint, type check, unit tests and authorization tests (user B can never read user A's data) arrive with the Amplify scaffold.
+Every pull request runs: Conventional PR title, secrets scan and repository regression tests. It also runs type check, lint and unit tests; authorization tests (user B can never read user A's data) arrive with the data model.
 
 ## License
 

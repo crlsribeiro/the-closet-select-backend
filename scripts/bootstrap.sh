@@ -5,7 +5,7 @@ set -euo pipefail
 brew bundle --file=Brewfile
 mise install
 if [ -f package-lock.json ]; then
-    mise exec -- npm ci
+    mise exec -- ./scripts/install-locked.sh
 fi
 
 echo "Ready. Node $(mise exec -- node -v), $(aws --version)"
